@@ -88,6 +88,7 @@ class TweetManager:
                     rawtext = TweetManager.textify(tweetPQ("p.js-tweet-text").html(), tweetCriteria.emoji)
                     tweet.text = re.sub(r"\s+", " ", rawtext)\
                         .replace('# ', '#').replace('@ ', '@').replace('$ ', '$')
+                    tweet.avatar = tweetPQ("img.avatar.js-action-profile-avatar").attr('src')
                     tweet.retweets = int(tweetPQ("span.ProfileTweet-action--retweet span.ProfileTweet-actionCount").attr("data-tweet-stat-count").replace(",", ""))
                     tweet.favorites = int(tweetPQ("span.ProfileTweet-action--favorite span.ProfileTweet-actionCount").attr("data-tweet-stat-count").replace(",", ""))
                     tweet.replies = int(tweetPQ("span.ProfileTweet-action--reply span.ProfileTweet-actionCount").attr("data-tweet-stat-count").replace(",", ""))
